@@ -4,3 +4,4 @@ file_pattern filter=lfs diff=lfs merge=lfs -text
 *.unity filter=lfs diff=lfs merge=lfs -text
 Assets/**/*.{mp3,mp4,wav} filter=lfs diff=lfs merge=lfs -text
 Library/PackageCache/com.unity.burst@1.6.6/.Runtime/hostmac/dsymutil filter=lfs diff=lfs merge=lfs -text
+Library/PackageCache/com.unity.burst@1.6.6/.Runtime/* filter=lfs diff=lfs merge=lfs -text
