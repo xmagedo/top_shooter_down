@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
+    
     public float moveSpeed;
+    public float chaseRange;
     private Transform playerTransform;
     // Start is called before the first frame update
     void Start()
@@ -16,6 +18,11 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, playerTransform.position, moveSpeed * Time.deltaTime);
+        float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
+
+        if (distanceToPlayer <= chaseRange)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, playerTransform.position, moveSpeed * Time.deltaTime);
+        }
     }
 }
