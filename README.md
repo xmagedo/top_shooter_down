@@ -10,10 +10,12 @@ Top-Down Shooter is a 2D action game created with Unity. In this game, players c
 - Collision detection between bullets and enemy
 - Enemy game object with Collider2D for collision detection
 
+
 # Updates
 - Added a simple enemy AI that follows the player
 - Implemented collision detection between bullets and enemy
 - Created enemy game object with Collider2D for accurate collision detection
+- Multiple enemies attack the player (upcoming update)
 
 
 
