@@ -11,12 +11,13 @@ public class BulletCollision : MonoBehaviour
         Destroy(gameObject, bulletLifetime);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D collision)
+{
+    if (collision.gameObject.CompareTag("Enemy"))
     {
-        if (other.CompareTag("Enemy"))
-        {
-            Destroy(other.gameObject); // Destroy the enemy
-            Destroy(gameObject); // Destroy the bullet
-        }
+        Destroy(collision.gameObject);
+        Destroy(this.gameObject);
     }
+}
+
 }
