@@ -4,32 +4,30 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
-  public GameObject bulletPrefab;
-public Transform bulletSpawnPoint;
-public float fireRate;
-private float nextFireTime;
+    public GameObject bulletPrefab;
+    public Transform bulletSpawnPoint;
+    public float fireRate;
+    private float nextFireTime;
 
-
-    // Start is called before the first frame update
-    void Start()
+    void ShootBullet(Vector3 direction)
     {
-        
+        GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+        bullet.GetComponent<BulletMovement>().SetDirection(direction);
     }
-    void ShootBullet()
-{
-    Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
-}
 
-
-    // Update is called once per frame
-   void Update()
-{
-    if (Input.GetKey(KeyCode.Space) && Time.time > nextFireTime)
+    void Update()
     {
-        ShootBullet();
-        nextFireTime = Time.time + fireRate;
+        if (Input.GetKey(KeyCode.Space) && Time.time > nextFireTime)
+        {
+            GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
+            if (enemy != null)
+            {
+                Vector3 direction = enemy.transform.position - transform.position;
+                direction.Normalize();
+
+                ShootBullet(direction);
+                nextFireTime = Time.time + fireRate;
+            }
+        }
     }
 }
-}
-
-

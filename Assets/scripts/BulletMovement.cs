@@ -4,16 +4,23 @@ using UnityEngine;
 
 public class BulletMovement : MonoBehaviour
 {
-    public float speed;
+    public float bulletSpeed = 10f;
+    private Vector3 _direction;
+
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<Rigidbody2D>().velocity = new Vector2(speed, 0);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        transform.position += _direction * bulletSpeed * Time.deltaTime;
+    }
+
+    public void SetDirection(Vector3 direction)
+    {
+        _direction = direction.normalized;
     }
 }
